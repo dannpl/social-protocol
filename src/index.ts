@@ -47,6 +47,7 @@ import { TOKEN_PROGRAM_ID } from '@project-serum/anchor/dist/cjs/utils/token'
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { GraphQLClient } from 'graphql-request'
 import { Order_By } from './gql/graphql'
+import createUserAndJoinGroup, { CreateGroupAndJoinGroupInput } from './methods/user/create-user-and-join-group'
 
 interface SplingProtocol {
   // USER METHODS
@@ -67,6 +68,7 @@ interface SplingProtocol {
   deleteUser(): Promise<void>
   followUser(userId: number): Promise<void>
   unfollowUser(userId: number): Promise<void>
+  createUserAndJoinGroup(data: CreateGroupAndJoinGroupInput): Promise<User>
 
   // GROUP METHODS
   createGroup(
@@ -129,6 +131,7 @@ export class SocialProtocol implements SplingProtocol {
   deleteUser = deleteUser
   followUser = followUser
   unfollowUser = unfollowUser
+  createUserAndJoinGroup = createUserAndJoinGroup
 
   // GROUP METHODS
   createGroup = createGroup
