@@ -60,7 +60,9 @@ export default async function createUserAndJoinGroup({
 
     const joinGroupProgramInstruction = await joinGroupProgram.instruction()
 
-    await joinGroupProgram.postInstructions([userProgramInstruction, joinGroupProgramInstruction]).rpc()
+    await joinGroupProgram
+      .postInstructions([userProgramInstruction, joinGroupProgramInstruction])
+      .rpc()
 
     return user
   } catch (error) {
